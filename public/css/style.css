@@ -1,0 +1,46 @@
+.nav-header{
+
+	background: yellow;
+
+}
+
+.nav-header ul{
+
+	list-style: none;
+
+}
+
+.nav-header li{
+
+	float: left;
+	background: green;
+	margin: 10px;
+	padding: 10px;
+
+}
+
+.clear{
+
+	clear: both;
+
+}
+
+.card-item{
+
+	height: 200px;
+	border: 1px solid black;
+
+}
+
+.container{
+
+	background: grey;
+
+}
+
+.products{
+
+	background: red;
+	padding: 0 15px;
+
+}
