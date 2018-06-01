@@ -1,12 +1,15 @@
 .nav-header{
 
 	background: yellow;
+	padding: 1px;
 
 }
 
 .nav-header ul{
 
 	list-style: none;
+	background: blue;
+	padding: 1px;
 
 }
 
@@ -42,5 +45,40 @@
 
 	background: red;
 	padding: 0 15px;
+
+}
+
+.box1{
+
+	background: red; 
+	height:700px;
+	position: relative;
+
+}
+
+.form-test{
+
+	background: yellow;
+	height: 100px;
+	width: 50%;
+	margin: 0 auto;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+}
+
+.form-test input{
+
+	width: 100%;
+
+}
+
+
+footer{
+
+	height: 300px;
+	background: black;
 
 }
