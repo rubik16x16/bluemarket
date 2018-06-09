@@ -24,7 +24,9 @@ class RegistroController extends Controller
 
 		if($usuario == null){
 
-			$usuario= new Usuario($request->all());
+			$usuario= new Usuario();
+			$usuario->email= $request->get('email');
+			$usuario->clave= password_hash($request->get('clave'), PASSWORD_DEFAULT);
 			$usuario->save();
 
 			$request->session()->put('usuario', $usuario);

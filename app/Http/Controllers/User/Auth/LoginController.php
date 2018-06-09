@@ -25,7 +25,7 @@ class LoginController extends Controller
 
 		if($usuario == null){
 
-			$request->session()->flash('error', 
+			$request->session()->flash('error',
 				[
 					'error' =>'Usuario inexistente',
 					'email' => $request->get('email'),
@@ -36,9 +36,9 @@ class LoginController extends Controller
 
 		}
 
-		if($usuario->clave != $request->get('clave')){
+		if(! password_verify($request->get('clave'), $usuario->clave)){
 
-			$request->session()->flash('error', 
+			$request->session()->flash('error',
 				[
 					'error' => 'Clave invalida',
 					'email' => $request->get('email')
