@@ -18,8 +18,8 @@
 						<button >Buscar</button>
 					</li>
 					<li>
-						@if(isset($usuario))
-						<h2>{{ $usuario->email }}</h2>
+						@if(session()->has('usuario'))
+						<h2>{{ session('usuario.email') }}</h2>
 						<a href="{{ route('user.logout') }}">Logout</a>
 						@else
 						<a href="{{ route('user.login.get') }}">ingreso</a>
@@ -41,7 +41,7 @@
 		<div class="container">
 
 			footer
-			
+
 		</div>
 	</footer>
 

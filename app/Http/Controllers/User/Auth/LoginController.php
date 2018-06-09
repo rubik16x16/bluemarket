@@ -13,9 +13,7 @@ class LoginController extends Controller
 
 	public function get(Request $request){
 
-		return view('user.auth.login', [
-			'error' => $request->session()->get('error')
-		]);
+		return view('user.auth.login');
 
 	}
 
@@ -25,12 +23,9 @@ class LoginController extends Controller
 
 		if($usuario == null){
 
-			$request->session()->flash('error',
-				[
-					'error' =>'Usuario inexistente',
-					'email' => $request->get('email'),
-					'clave' => $request->get('clave')
-				]);
+			$request->session()->flash('error', 'Usuario inexistente');
+			$request->session()->flash('email', $request->get('email'));
+			$request->session()->flash('clave', $request->get('clave'));
 
 			return redirect(route('user.login.get'));
 
@@ -38,11 +33,8 @@ class LoginController extends Controller
 
 		if(! password_verify($request->get('clave'), $usuario->clave)){
 
-			$request->session()->flash('error',
-				[
-					'error' => 'Clave invalida',
-					'email' => $request->get('email')
-				]);
+			$request->session()->flash('error', 'Clave invalida');
+			$request->session()->flash('email', $request->get('email'));
 
 			return redirect(route('user.login.get'));
 

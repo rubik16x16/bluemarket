@@ -6,11 +6,15 @@
 
 	<form class="form-test" action="{{ route('registro.post') }}" method="post">
 		{{ csrf_field() }}
-		<input type="email" name="email" placeholder="email">
-		@isset($email_error)
+		<input type="email" name="email" placeholder="email" value="{{ session('email', '') }}" required>
+
+		@if(session()->has('error'))
+
 			<span>Usuario ya registrado</span>
-		@endisset
-		<input type="password" name="clave" placeholder="clave">
+
+		@endif
+
+		<input type="password" name="clave" placeholder="clave" required>
 		<input type="submit" name="enviar" value="enviar">
 	</form>
 

@@ -13,8 +13,7 @@ class RegistroController extends Controller
 
 	public function get(Request $request){
 
-		$emailError= $request->session()->get('email_error');
-		return view('user.auth.registro', ['email_error' => $emailError]);
+		return view('user.auth.registro');
 
 	}
 
@@ -35,7 +34,8 @@ class RegistroController extends Controller
 
 		}
 
-		$request->session()->flash('email_error', 'Usuario ya registrado');
+		$request->session()->flash('error', 'Usuario ya registrado');
+		$request->session()->flash('email', $request->get('email'));
 
 		return redirect(route('registro.get'));
 

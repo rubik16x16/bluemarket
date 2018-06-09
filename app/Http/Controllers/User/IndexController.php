@@ -10,9 +10,7 @@ class IndexController extends Controller
 
 	public function index(Request $request){
 
-		$usuario= $request->session()->get('usuario');
-
-		return view('user.index', ['usuario' => $usuario]);
+		return view('user.index');
 
 	}
 
