@@ -5,7 +5,7 @@
 
 }
 
-.nav-header ul{
+.nav-header-menu{
 
 	list-style: none;
 	background: blue;
@@ -13,7 +13,7 @@
 
 }
 
-.nav-header li{
+.nav-header-menu > li{
 
 	float: left;
 	background: green;
@@ -50,7 +50,7 @@
 
 .box1{
 
-	background: red; 
+	background: red;
 	height:700px;
 	position: relative;
 

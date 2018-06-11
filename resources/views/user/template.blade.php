@@ -11,7 +11,7 @@
 
 		<nav class="nav-header">
 			<div class="container">
-				<ul>
+				<ul class="nav-header-menu">
 					<li><h1>Bluemarket</h1></li>
 					<li>
 						<input type="text" name="buscar" placeholder="buscar">
@@ -19,11 +19,13 @@
 					</li>
 					<li>
 						@if(session()->has('usuario'))
-						<h2>{{ session('usuario.email') }}</h2>
-						<a href="{{ route('user.logout') }}">Logout</a>
+
+							@include('user.includes.auth')
+
 						@else
-						<a href="{{ route('user.login.get') }}">ingreso</a>
-						<a href="{{ route('registro.get') }}">registro</a>
+
+							@include('user.includes.guest')
+
 						@endif
 					</li>
 				</ul>
