@@ -19,7 +19,7 @@ class CreateProductosTable extends Migration
             $table->string('nombre', 30);
             $table->integer('cantidad');
             $table->float('precio');
-            $table->boolean('estado');
+            $table->boolean('estado')->default(true);
             $table->timestamps();
 
         });
