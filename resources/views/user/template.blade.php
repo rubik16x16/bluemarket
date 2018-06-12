@@ -47,7 +47,7 @@
 		</div>
 	</footer>
 
-	<script src="{{ asset('js/vue.min.js') }}"></script>
+	<script src="{{ asset('js/vue.js') }}"></script>
 	@yield('scripts')
 
 </body>
