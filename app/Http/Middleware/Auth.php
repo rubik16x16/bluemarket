@@ -18,7 +18,7 @@ class Auth
 
       if(! $request->session()->has('usuario')){
 
-          return redirect(route('user.login'));
+          return redirect(route('user.login.get'));
 
       }
 
