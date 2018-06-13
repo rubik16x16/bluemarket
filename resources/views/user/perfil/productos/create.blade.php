@@ -17,12 +17,15 @@
 
       <h2>Crear Producto</h2>
 
-      <form action="{{ route('user.productos.store') }}" method="post">
+      <form action="{{ route('user.productos.store') }}" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
 
-        <input type="text" name="nombre" value="" placeholder="nombre">
-        <input type="text" name="cantidad" value="" placeholder="cantidad">
-        <input type="text" name="precio" value="" placeholder="precio">
+        <input type="text" name="nombre" value="" placeholder="nombre" required>
+        <input type="text" name="cantidad" value="" placeholder="cantidad" required>
+        <input type="text" name="precio" value="" placeholder="precio" required>
+
+				<div id= "imgs"></div>
+
         <input type="submit" value="guardar">
 
       </form>
@@ -30,5 +33,34 @@
 		</div>
 	</div>
 </div>
+
+@endsection
+
+@section('scripts')
+
+<script>
+
+const imgs= new Vue({
+
+	el: '#imgs',
+	template: `
+		@verbatim
+		<div class="img-panel">
+			<input v-for="n in inputs" type="file" :name="'img-' + n" value="">
+			<button type="button" name="button" @click="inputs+= 1">Agregar imagen</button>
+		</div>
+		@endverbatim
+	`,
+	data: {
+
+		inputs: 1
+
+	}
+
+});
+
+
+
+</script>
 
 @endsection
