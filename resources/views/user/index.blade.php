@@ -3,6 +3,7 @@
 @section('content')
 
 <div class="row">
+
 	<div class="col-3">
 		<h2>Categorias</h2>
 		<ul>
@@ -10,6 +11,7 @@
 			<li>Categoria2</li>
 		</ul>
 	</div>
+	
 	<div class="col-9">
 		<div class="products">
 			<div class="row">
