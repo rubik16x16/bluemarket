@@ -27,6 +27,24 @@ Route::middleware(['Guest'])->group(function(){
 
 });
 
+// Perfil
+
+Route::middleware(['Auth'])->prefix('perfil')->group(function(){
+
+	Route::resource('/productos', 'User\Perfil\productosController', [
+		'names' => [
+			'index' => 'user.productos.index',
+			'create' => 'user.productos.create',
+			'store' => 'user.productos.store',
+			'show' => 'user.productos.show',
+			'edit' => 'user.productos.edit',
+			'update' => 'user.productos.update',
+			'destroy' => 'user.productos.destroy'
+		]
+	]);
+
+});
+
 Route::get('/logout', function(){
 
 	session()->forget('usuario');
