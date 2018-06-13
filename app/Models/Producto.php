@@ -11,7 +11,13 @@ class Producto extends Model{
 
   public function usuario(){
 
-    return $this->hasOne('App\Models\Usuario', 'id', 'usuario_id');
+    return $this->belongsTo('App\Models\Usuario');
+
+  }
+
+  public function imagenes(){
+
+    return $this->hasMany('App\Models\Imagen');
 
   }
 
