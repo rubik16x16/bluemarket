@@ -4,9 +4,11 @@ namespace App\Http\Controllers\User\Perfil;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 use App\Models\Producto;
 use App\Models\Usuario;
+use App\Models\Imagen;
 
 class productosController extends Controller{
 	/**
@@ -46,6 +48,19 @@ class productosController extends Controller{
 		$producto= new Producto($request->all());
 		$producto->usuario_id= session('usuario.id');
 		$producto->save();
+
+		$orden= 0;
+		foreach($request->file() as $file){
+
+			$url= $file->store('imgs', 'public');
+			$imagen= new Imagen();
+			$imagen->src= $url;
+			$imagen->producto_id= $producto->id;
+			$imagen->orden= $orden++;
+			$imagen->save();
+
+		}
+
 		return redirect(route('user.productos.index'));
 
 	}
@@ -107,7 +122,15 @@ class productosController extends Controller{
 	 */
 	public function destroy($id){
 
-		Producto::destroy($id);
+		$producto= Producto::find($id);
+		$imgs= $producto->imagenes()->get()->map(function($img){
+
+			return $img->src;
+
+		})->toArray();
+
+		Storage::disk('public')->delete($imgs);
+		$producto->delete();
 
 	}
 }
