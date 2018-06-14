@@ -90,7 +90,12 @@ class productosController extends Controller{
 	 */
 	public function edit($id){
 
-		return view('user.perfil.productos.edit', ['producto'=> Producto::find($id)]);
+		$producto= Producto::find($id);
+		$producto->imagenes= $producto->imagenes()->orderBy('orden')->get()->toArray();
+
+		return view('user.perfil.productos.edit', [
+			'producto'=> $producto
+		]);
 
 	}
 

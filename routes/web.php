@@ -43,6 +43,8 @@ Route::middleware(['Auth'])->prefix('perfil')->group(function(){
 		]
 	]);
 
+	Route::delete('/imagen/{id}', 'User\imagenesController@destroy')->name('user.imagenes.destroy');
+
 });
 
 Route::get('/logout', function(){

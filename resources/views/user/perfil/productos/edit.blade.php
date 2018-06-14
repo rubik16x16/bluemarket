@@ -26,8 +26,68 @@
         <input type="submit" value="guardar">
       </form>
 
+			<h2>imagenes</h2>
+
+			<div id="imgs"></div>
+
 		</div>
 	</div>
 </div>
+
+@endsection
+
+@section('scripts')
+
+	<script>
+
+	const imgs= new Vue({
+		el: '#imgs',
+		data: {
+			imgs: @json($producto->imagenes),
+			path: "{{ asset('storage') }}" + "/",
+			route: "{{ route('user.imagenes.destroy', ['id'=> null]) }}"
+		},
+		template: `
+			<div>
+				<div class="imgs-box" v-for="(img, index) in imgs">
+					<img  :src="path + img.src" alt="" width="200">
+					<button @click="imgDel(index, img.id)" type="button">borrar</button>
+				</div>
+			</div>
+		`,
+		methods: {
+			imgDel: function(index, id){
+
+				this.imgs.splice(index, 1);
+
+				if (window.XMLHttpRequest) { // Mozilla, Safari, ...
+
+					var xhttp = new XMLHttpRequest();
+
+				} else if (window.ActiveXObject) { // IE
+
+					var xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+
+				}
+
+				xhttp.onreadystatechange = function() {
+
+					 if (this.readyState == 4) {
+
+							// alert(this.responseText);
+
+					 }
+
+				};
+
+				xhttp.open("DELETE", this.route + '/' + id, true);
+				xhttp.setRequestHeader('X-CSRF-TOKEN', '{{ csrf_token() }}');
+				xhttp.send();
+
+			}
+		}
+	});
+
+	</script>
 
 @endsection
