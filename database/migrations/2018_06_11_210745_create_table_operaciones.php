@@ -16,9 +16,12 @@ class CreateTableOperaciones extends Migration
         Schema::create('operaciones', function (Blueprint $table) {
 
             $table->increments('id');
-            $table->integer('comprador_id')->references('id')->on('usuarios')->onDelete('cascade')->onUpdate('cascade');
-            $table->integer('vendedor_id')->references('id')->on('usuarios')->onDelete('cascade')->onUpdate('cascade');
-            $table->integer('producto_id')->references('id')->on('productos')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedInteger('comprador_id');
+            $table->unsignedInteger('vendedor_id');
+            $table->unsignedInteger('producto_id');
+            $table->foreign('comprador_id')->references('id')->on('usuarios')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('vendedor_id')->references('id')->on('usuarios')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('producto_id')->references('id')->on('productos')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('cantidad');
             $table->timestamps();
 

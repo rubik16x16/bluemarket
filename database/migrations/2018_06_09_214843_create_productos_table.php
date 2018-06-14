@@ -20,7 +20,8 @@ class CreateProductosTable extends Migration
       $table->float('precio');
       $table->boolean('estado')->default(true);
       $table->timestamps();
-      $table->integer('usuario_id')->references('id')->on('usuarios')->onDelete('cascade')->onUpdate('cascade');
+      $table->unsignedInteger('usuario_id');
+      $table->foreign('usuario_id')->references('id')->on('usuarios')->onDelete('cascade')->onUpdate('cascade');
 
     });
   }

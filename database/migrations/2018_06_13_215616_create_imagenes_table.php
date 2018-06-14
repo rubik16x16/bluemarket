@@ -15,7 +15,8 @@ class CreateImagenesTable extends Migration{
     Schema::create('imagenes', function (Blueprint $table) {
       $table->increments('id');
       $table->string('src');
-      $table->integer('producto_id')->references('id')->on('productos')->onDelete('cascade')->onUpdate('cascade');
+      $table->unsignedInteger('producto_id');
+      $table->foreign('producto_id')->references('id')->on('productos')->onDelete('cascade')->onUpdate('cascade');
       $table->integer('orden');
       $table->timestamps();
     });
@@ -30,6 +31,6 @@ class CreateImagenesTable extends Migration{
   public function down(){
 
     Schema::dropIfExists('imagenes');
-    
+
   }
 }
