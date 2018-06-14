@@ -15,18 +15,18 @@
 	<div class="col-9">
 		<div class="products">
 
-      <h2>Crear Producto</h2>
+      <h2>Producto {{ $producto->name }}</h2>
 
-      <form action="{{ route('user.productos.store') }}" method="post">
-        {{ csrf_field() }}
+			<span>nombre: {{ $producto->nombre }}</span>
+			<span>cantidad: {{ $producto->cantidad }}</span>
+			<span>precio: {{ $producto->precio }}</span>
+			<span>estado: {{ $producto->estado }}</span>
 
-        <input type="text" name="nombre" value="" placeholder="nombre">
-				<input type="hidden" name="usuario_id" value="{{ session('usuario.id') }}">
-        <input type="text" name="cantidad" value="" placeholder="cantidad">
-        <input type="text" name="precio" value="" placeholder="precio">
-        <input type="submit" value="guardar">
+			<h2>imagenes</h2>
 
-      </form>
+			@foreach($producto->imagenes as $imagen)
+				<img src="{{ asset('storage/' . $imagen->src) }}" alt="" width="200">
+			@endforeach
 
 		</div>
 	</div>

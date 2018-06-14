@@ -73,7 +73,12 @@ class productosController extends Controller{
 	 */
 	public function show($id){
 
-		dd(Producto::find($id));
+		$producto= Producto::find($id);
+		$producto->imagenes= $producto->imagenes()->get()->sortBy('orden');
+
+		return view('user.perfil.productos.show', [
+			'producto' =>$producto
+		]);
 
 	}
 
