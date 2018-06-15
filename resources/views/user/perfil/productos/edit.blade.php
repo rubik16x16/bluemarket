@@ -23,11 +23,12 @@
         <input type="text" name="nombre" value="{{ $producto->nombre }}" placeholder="nombre">
         <input type="text" name="cantidad" value="{{ $producto->cantidad }}" placeholder="cantidad">
         <input type="text" name="precio" value="{{ $producto->precio }}" placeholder="precio">
-        <input type="submit" value="guardar">
 
 				<h2>imagenes</h2>
 
 				<div id="imgs"></div>
+
+				<input type="submit" value="guardar">
 
 			</form>
 
