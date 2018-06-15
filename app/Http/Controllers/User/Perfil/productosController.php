@@ -21,7 +21,7 @@ class productosController extends Controller{
 		$usuario= Usuario::find(session('usuario.id'));
 
 		return view('user.perfil.productos.index', [
-			'productos' => $usuario->productos()->get()->toArray()
+			'productos' => $usuario->productos()->get()
 		]);
 
 	}
@@ -92,7 +92,7 @@ class productosController extends Controller{
 	public function edit($id){
 
 		$producto= Producto::find($id);
-		$producto->imagenes= $producto->imagenes()->orderBy('orden')->get()->toArray();
+		$producto->imagenes= $producto->imagenes()->orderBy('orden')->get();
 
 		return view('user.perfil.productos.edit', [
 			'producto'=> $producto
