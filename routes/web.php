@@ -13,6 +13,8 @@
 
 Route::get('/', 'User\IndexController@index')->name('user.index');
 
+Route::get('/producto/{id}', 'User\productosController@show')->name('user.public.producto.show');
+
 // Login / Registro
 
 Route::middleware(['Guest'])->group(function(){
