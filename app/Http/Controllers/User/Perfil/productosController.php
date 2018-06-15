@@ -49,14 +49,15 @@ class productosController extends Controller{
 		$producto->usuario_id= session('usuario.id');
 		$producto->save();
 
-		$orden= 0;
+		$orden= 1;
 		foreach($request->file() as $file){
 
-			$url= $file->store('imgs', 'public');
-			$imagen= new Imagen();
-			$imagen->src= $url;
-			$imagen->producto_id= $producto->id;
-			$imagen->orden= $orden++;
+			$imagen= new Imagen([
+				'src' => $file->store('imgs', 'public'),
+				'producto_id' => $producto->id,
+				'orden' => $orden++
+			]);
+
 			$imagen->save();
 
 		}
@@ -115,6 +116,19 @@ class productosController extends Controller{
 
 			$producto->fill($request->all());
 			$producto->save();
+
+			$orden= 1;
+			foreach($request->file() as $file){
+
+				$imagen= new Imagen([
+					'src' => $file->store('imgs', 'public'),
+					'producto_id' => $producto->id,
+					'orden' => $orden++
+				]);
+
+				$imagen->save();
+
+			}
 
 			return redirect(route('user.productos.index'));
 

@@ -17,18 +17,19 @@
 
       <h2>Editar Producto: {{ $producto->nombre }}</h2>
 
-      <form action="{{ route('user.productos.update', ['id' => $producto->id]) }}" method="post">
+      <form action="{{ route('user.productos.update', ['id' => $producto->id]) }}" method="post" enctype="multipart/form-data" enctype="multipart/form-data">
         @method('PUT')
         {{ csrf_field() }}
         <input type="text" name="nombre" value="{{ $producto->nombre }}" placeholder="nombre">
         <input type="text" name="cantidad" value="{{ $producto->cantidad }}" placeholder="cantidad">
         <input type="text" name="precio" value="{{ $producto->precio }}" placeholder="precio">
         <input type="submit" value="guardar">
-      </form>
 
-			<h2>imagenes</h2>
+				<h2>imagenes</h2>
 
-			<div id="imgs"></div>
+				<div id="imgs"></div>
+
+			</form>
 
 		</div>
 	</div>
@@ -39,6 +40,26 @@
 @section('scripts')
 
 	<script>
+
+	Vue.component('imgs-add',{
+
+		template: `
+			@verbatim
+			<div class="img-panel">
+				<input v-for="n in inputs" type="file" :name="'img-' + n" value="">
+				<button type="button" name="button" @click="inputs+= 1">Agregar imagen</button>
+			</div>
+			@endverbatim
+		`,
+		data: function(){
+
+			return {
+				inputs: 0
+			}
+
+		}
+
+	});
 
 	const imgs= new Vue({
 		el: '#imgs',
@@ -53,6 +74,7 @@
 					<img  :src="path + img.src" alt="" width="200">
 					<button @click="imgDel(index, img.id)" type="button">borrar</button>
 				</div>
+				<imgs-add></imgs-add>
 			</div>
 		`,
 		methods: {
