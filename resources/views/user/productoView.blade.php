@@ -14,18 +14,26 @@
 
 	<div class="col-9">
 
-    <h2>{{ $producto->nombre }}</h2>
-
+		@verbatim
 		<div id="visor-imgs">
+
+			<h2>{{ producto.nombre }}</h2>
+
 			<div class="row">
 				<div class="col-3">
-					<img v-for="(img, index) in imgs" :src="imgRoute(img)" @click="imgFocus= index" alt="" height="120"/>
+					<img v-for="(img, index) in producto.imagenes" :src="imgRoute(img)" @click="imgFocus= index" alt="" height="120"/>
 				</div>
 				<div class="col-9">
-					<img :src="imgRoute(imgs[imgFocus])" alt="" height="360" />
+					<img :src="imgRoute(producto.imagenes[imgFocus])" alt="" height="360" />
 				</div>
 			</div>
+
+			<span>stock: {{ producto.cantidad }}</span>
+			<span>precio: {{ producto.precio }}</span>
+			<span>vendedor: {{ producto.usuario.email }}</span>
+
 		</div>
+		@endverbatim
 
 	</div>
 </div>
@@ -40,7 +48,7 @@
 
 		el: '#visor-imgs',
 		data: {
-			imgs: @json($producto->imagenes),
+			producto: @json($producto),
 			route: "{{ asset('storage') }}",
 			imgFocus: 0
 		},
