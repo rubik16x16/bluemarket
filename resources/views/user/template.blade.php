@@ -12,7 +12,7 @@
 		<nav class="nav-header">
 			<div class="container">
 				<ul class="nav-header-menu">
-					<li><h1>Bluemarket</h1></li>
+					<li><a href="{{ route('user.index') }}"><h1>Bluemarket</h1></a></li>
 					<li>
 						<input type="text" name="buscar" placeholder="buscar">
 						<button >Buscar</button>
