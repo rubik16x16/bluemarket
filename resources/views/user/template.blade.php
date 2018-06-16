@@ -48,6 +48,7 @@
 	</footer>
 
 	<script src="{{ asset('js/vue.js') }}"></script>
+	<script src="{{ asset('js/axios.min.js') }}"></script>
 	@yield('scripts')
 
 </body>
