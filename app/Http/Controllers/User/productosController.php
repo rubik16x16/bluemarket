@@ -11,9 +11,7 @@ class productosController extends Controller{
 
   public function show($id){
 
-    $producto= Producto::find($id);
-    $producto->usuario= $producto->usuario()->get()->first();
-    $producto->imagenes= $producto->imagenes()->get();
+    $producto= Producto::find($id)->load(['imagenes', 'usuario']);
 
     return view('user.productoView', ['producto' => $producto]);
 

@@ -7,18 +7,16 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Operacion;
 use App\Models\Producto;
+use App\Models\Usuario;
 
 class operacionesController extends Controller
 {
   public function comprasGet(){
 
-    $compras= Operacion::where('comprador_id', session('usuario.id'))->get();
+    $compras= Usuario::find(session('usuario.id'))->compras()->with('producto')->get();
 
-    foreach($compras as $compra){
-
-      $compra->producto= Producto::find($compra->producto_id);
-      $compra->total= $compra->producto->precio * $compra->cantidad;
-
+    foreach ($compras as $compra) {
+      $compra->total= $compra->total();
     }
 
     return view('user.perfil.compras.index', ['compras' => $compras]);
@@ -44,4 +42,5 @@ class operacionesController extends Controller
     return redirect(route('user.public.producto.show', ['id' => $producto->id]));
 
   }
+
 }
