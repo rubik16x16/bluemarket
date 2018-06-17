@@ -13,15 +13,13 @@
 	</div>
 
 	<div class="col-9">
-		<div class="products">
 
-			<h2>Mis Productos</h2>
+		<h2>Mis Productos</h2>
 
-			<div id="productos"></div>
+		<div id="productos"></div>
 
-			<a href="{{ route('user.productos.create') }}">nuevo</a>
+		<a href="{{ route('user.productos.create') }}">nuevo</a>
 
-		</div>
 	</div>
 </div>
 

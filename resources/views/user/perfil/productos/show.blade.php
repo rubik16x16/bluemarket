@@ -13,22 +13,20 @@
 	</div>
 
 	<div class="col-9">
-		<div class="products">
 
-      <h2>Producto {{ $producto->name }}</h2>
+    <h2>Producto {{ $producto->name }}</h2>
 
-			<span>nombre: {{ $producto->nombre }}</span>
-			<span>cantidad: {{ $producto->cantidad }}</span>
-			<span>precio: {{ $producto->precio }}</span>
-			<span>estado: {{ $producto->estado }}</span>
+		<span>nombre: {{ $producto->nombre }}</span>
+		<span>cantidad: {{ $producto->cantidad }}</span>
+		<span>precio: {{ $producto->precio }}</span>
+		<span>estado: {{ $producto->estado }}</span>
 
-			<h2>imagenes</h2>
+		<h2>imagenes</h2>
 
-			@foreach($producto->imagenes as $imagen)
-				<img src="{{ asset('storage/' . $imagen->src) }}" alt="" width="200">
-			@endforeach
+		@foreach($producto->imagenes as $imagen)
+			<img src="{{ asset('storage/' . $imagen->src) }}" alt="" width="200">
+		@endforeach
 
-		</div>
 	</div>
 </div>
 

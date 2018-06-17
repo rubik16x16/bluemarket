@@ -14,10 +14,9 @@
 
 	<div class="col-9">
 
-		@verbatim
 		<div id="visor-imgs">
 
-			<h2>{{ producto.nombre }}</h2>
+			<h2>@{{ producto.nombre }}</h2>
 
 			<div class="row">
 				<div class="col-3">
@@ -28,12 +27,21 @@
 				</div>
 			</div>
 
-			<span>stock: {{ producto.cantidad }}</span>
-			<span>precio: {{ producto.precio }}</span>
-			<span>vendedor: {{ producto.usuario.email }}</span>
+			<span>stock: @{{ producto.existencia }}</span>
+			<span>precio: @{{ producto.precio }}</span>
+			<span>vendedor: @{{ producto.usuario.email }}</span>
+
+			<form id="compra" action="{{ route('user.compras.post') }}" @keypress.enter.prevent="comprar" method="post">
+				{{ csrf_field() }}
+
+				<input type="hidden" name="producto" :value="producto.id">
+				<label for="cantidad">cantidad</label>
+				<input type="number" v-model="compra.cantidad" name="cantidad" id="cantidad">
+				<button type="button" @click="comprar" name="comprar">comprar</button>
+
+			</form>
 
 		</div>
-		@endverbatim
 
 	</div>
 </div>
@@ -50,11 +58,39 @@
 		data: {
 			producto: @json($producto),
 			route: "{{ asset('storage') }}",
-			imgFocus: 0
+			imgFocus: 0,
+			compra: {
+				cantidad: 1
+			}
 		},
 		methods: {
 			imgRoute: function(img){
 				return this.route + '/' + img.src;
+			},
+			comprar: function(){
+
+				var frmCompra= document.getElementById('compra');
+
+				if(this.compra.cantidad > this.producto.cantidad && this.compra.cantidad != 0){
+
+					return alert('no hay stock suficiente');
+
+				}
+
+				var url= frmCompra.getAttribute('action');
+
+				// axios({
+				// 	method: 'post',
+				// 	url: url,
+				// 	headers: {
+				// 		'X-CSRF-TOKEN': '{{ csrf_token() }}'
+				// 	}
+				// }).then(response => { console.log(response) }).catch(e => { console.log(e); });
+
+				return frmCompra.submit();
+
+				// frmCompra.submit();
+
 			}
 		}
 

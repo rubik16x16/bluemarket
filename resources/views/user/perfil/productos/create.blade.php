@@ -13,24 +13,22 @@
 	</div>
 
 	<div class="col-9">
-		<div class="products">
 
-      <h2>Crear Producto</h2>
+    <h2>Crear Producto</h2>
 
-      <form action="{{ route('user.productos.store') }}" method="post" enctype="multipart/form-data">
-        {{ csrf_field() }}
+    <form action="{{ route('user.productos.store') }}" method="post" enctype="multipart/form-data">
+      {{ csrf_field() }}
 
-        <input type="text" name="nombre" value="" placeholder="nombre" required>
-        <input type="text" name="existencia" value="" placeholder="existencia" required>
-        <input type="text" name="precio" value="" placeholder="precio" required>
+      <input type="text" name="nombre" value="" placeholder="nombre" required>
+      <input type="text" name="existencia" value="" placeholder="existencia" required>
+      <input type="text" name="precio" value="" placeholder="precio" required>
 
-				<div id= "imgs"></div>
+			<div id= "imgs"></div>
 
-        <input type="submit" value="guardar">
+      <input type="submit" value="guardar">
 
-      </form>
+    </form>
 
-		</div>
 	</div>
 </div>
 

@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', 'User\IndexController@index')->name('user.index');
-
-Route::get('/producto/{id}', 'User\productosController@show')->name('user.public.producto.show');
+//**************************** Guest ********************************
 
 // Login / Registro
 
@@ -28,6 +26,8 @@ Route::middleware(['Guest'])->group(function(){
 	Route::post('/registro', 'User\Auth\RegistroController@post')->name('registro.post');
 
 });
+
+//****************************** Auth *************************************
 
 // Perfil
 
@@ -45,7 +45,15 @@ Route::middleware(['Auth'])->prefix('perfil')->group(function(){
 		]
 	]);
 
+	// Eliminar imagenes
+
 	Route::delete('/imagen/{id}', 'User\imagenesController@destroy')->name('user.imagenes.destroy');
+
+	// Compras
+
+	Route::get('/compras', 'User\Perfil\operacionesController@comprasGet')->name('user.compras.get');
+
+	Route::post('/compras', 'User\Perfil\operacionesController@comprasPost')->name('user.compras.post');
 
 });
 
@@ -56,3 +64,11 @@ Route::get('/logout', function(){
 	return redirect(route('user.index'));
 
 })->name('user.logout');
+
+// ***************************** All ************************************
+
+Route::get('/', 'User\IndexController@index')->name('user.index');
+
+Route::get('/producto/{id}', 'User\productosController@show')->name('user.public.producto.show');
+
+require __DIR__ . '/adminRoutes.php';
