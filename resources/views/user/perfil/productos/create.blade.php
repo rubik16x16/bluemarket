@@ -21,7 +21,7 @@
         {{ csrf_field() }}
 
         <input type="text" name="nombre" value="" placeholder="nombre" required>
-        <input type="text" name="cantidad" value="" placeholder="cantidad" required>
+        <input type="text" name="existencia" value="" placeholder="existencia" required>
         <input type="text" name="precio" value="" placeholder="precio" required>
 
 				<div id= "imgs"></div>
