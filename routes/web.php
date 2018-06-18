@@ -55,6 +55,10 @@ Route::middleware(['Auth'])->prefix('perfil')->group(function(){
 
 	Route::post('/compras', 'User\Perfil\operacionesController@comprasPost')->name('user.compras.post');
 
+	// Ventas
+
+	Route::get('/ventas', 'User\Perfil\operacionesController@ventasGet')->name('user.ventas.get');
+
 });
 
 Route::get('/logout', function(){

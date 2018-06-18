@@ -43,4 +43,18 @@ class operacionesController extends Controller
 
   }
 
+  public function ventasGet(){
+
+    $ventas= Usuario::find(session('usuario.id'))->ventas()->get()->load('producto');
+
+    foreach($ventas as $venta){
+
+      $venta->total = $venta->total();
+
+    }
+
+    return view('user.perfil.ventas', ['ventas' => $ventas]);
+
+  }
+
 }
