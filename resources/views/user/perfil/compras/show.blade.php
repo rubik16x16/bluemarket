@@ -13,17 +13,17 @@
 	</div>
 
 	<div class="col-9">
-			<h2>Mis Ventas</h2>
+			<h2>Mis Compras</h2>
 
       <div class="row">
 
         <div class="col-3">
-          <span>producto: {{ $venta->producto->nombre }}</span>
-          <span>precio: {{ $venta->producto->precio }}</span>
-          <span>cantidad: {{ $venta->cantidad }}</span>
-          <span>total: {{ $venta->total }}</span>
+          <span>producto: {{ $compra->producto->nombre }}</span>
+          <span>precio: {{ $compra->producto->precio }}</span>
+          <span>cantidad: {{ $compra->cantidad }}</span>
+          <span>total: {{ $compra->total }}</span>
 
-          <span>comprador: {{ $venta->comprador->email }}</span>
+          <span>vendedor: {{ $compra->comprador->email }}</span>
 
         </div>
 

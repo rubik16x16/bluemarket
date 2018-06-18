@@ -11,7 +11,7 @@ use App\Models\Usuario;
 
 class operacionesController extends Controller
 {
-  public function comprasGet(){
+  public function comprasIndex(){
 
     $compras= Usuario::find(session('usuario.id'))->compras()->with('producto')->get();
 
@@ -20,6 +20,22 @@ class operacionesController extends Controller
     }
 
     return view('user.perfil.compras.index', ['compras' => $compras]);
+
+  }
+
+  public function comprasShow($id){
+
+    $compra= Operacion::find($id)->load(['comprador', 'vendedor']);
+
+    $compra->total= $compra->total();
+
+    if($compra->comprador->id == session('usuario.id')){
+
+      return view('user.perfil.compras.show', ['compra' => $compra]);
+
+    }
+
+    return 'esta operacion no le pertenece';
 
   }
 
