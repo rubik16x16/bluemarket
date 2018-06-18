@@ -22,6 +22,7 @@
           <span>precio: {{ $venta->producto->precio }}</span>
           <span>cantidad: {{ $venta->cantidad }}</span>
           <span>total: {{ $venta->total }}</span>
+          <a href="{{ route('user.ventas.show', ['id' => $venta->id]) }}">Ver</a>
         </div>
         @endforeach
       </div>

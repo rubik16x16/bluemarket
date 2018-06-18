@@ -21,4 +21,16 @@ class Operacion extends Model{
 
   }
 
+  public function comprador(){
+
+    return $this->belongsTo('App\Models\Usuario', 'comprador_id', 'id');
+
+  }
+
+  public function vendedor(){
+
+    return $this->belongsTo('App\Models\Usuario', 'vendedor_id', 'id');
+
+  }
+
 }

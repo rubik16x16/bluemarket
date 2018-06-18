@@ -25,11 +25,11 @@ class operacionesController extends Controller
 
   public function comprasPost(Request $request){
 
-    $producto= Producto::find($request->producto);
+    $producto= Producto::find($request->producto)->load('usuario');
 
     $datos= [
       'comprador_id' => session('usuario.id'),
-      'vendedor_id' => $producto->usuario()->get()->first()->id,
+      'vendedor_id' => $producto->usuario->id,
       'producto_id' => $producto->id,
       'cantidad' => $request->cantidad
     ];
@@ -43,7 +43,7 @@ class operacionesController extends Controller
 
   }
 
-  public function ventasGet(){
+  public function ventasIndex(){
 
     $ventas= Usuario::find(session('usuario.id'))->ventas()->get()->load('producto');
 
@@ -53,7 +53,23 @@ class operacionesController extends Controller
 
     }
 
-    return view('user.perfil.ventas', ['ventas' => $ventas]);
+    return view('user.perfil.ventas.index', ['ventas' => $ventas]);
+
+  }
+
+  public function ventasShow($id){
+
+    $venta= Operacion::find($id)->load(['comprador', 'vendedor']);
+
+    $venta->total= $venta->total();
+
+    if($venta->vendedor->id == session('usuario.id')){
+
+      return view('user.perfil.ventas.show', ['venta' => $venta]);
+
+    }
+
+    return 'esta operacion no le pertenece';
 
   }
 

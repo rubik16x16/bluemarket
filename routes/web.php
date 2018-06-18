@@ -57,7 +57,10 @@ Route::middleware(['Auth'])->prefix('perfil')->group(function(){
 
 	// Ventas
 
-	Route::get('/ventas', 'User\Perfil\operacionesController@ventasGet')->name('user.ventas.get');
+	Route::get('/ventas', 'User\Perfil\operacionesController@ventasIndex')->name('user.ventas.index');
+
+	Route::get('/ventas/{id}', 'User\Perfil\operacionesController@ventasShow')->name('user.ventas.show');
+
 
 });
 
