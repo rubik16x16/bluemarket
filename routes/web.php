@@ -51,9 +51,18 @@ Route::middleware(['Auth'])->prefix('perfil')->group(function(){
 
 	// Compras
 
-	Route::get('/compras', 'User\Perfil\operacionesController@comprasGet')->name('user.compras.get');
+	Route::get('/compras', 'User\Perfil\operacionesController@comprasIndex')->name('user.compras.index');
+
+	Route::get('/compras/{id}', 'User\Perfil\operacionesController@comprasShow')->name('user.compras.show');
 
 	Route::post('/compras', 'User\Perfil\operacionesController@comprasPost')->name('user.compras.post');
+
+	// Ventas
+
+	Route::get('/ventas', 'User\Perfil\operacionesController@ventasIndex')->name('user.ventas.index');
+
+	Route::get('/ventas/{id}', 'User\Perfil\operacionesController@ventasShow')->name('user.ventas.show');
+
 
 });
 
@@ -70,5 +79,3 @@ Route::get('/logout', function(){
 Route::get('/', 'User\IndexController@index')->name('user.index');
 
 Route::get('/producto/{id}', 'User\productosController@show')->name('user.public.producto.show');
-
-require __DIR__ . '/adminRoutes.php';

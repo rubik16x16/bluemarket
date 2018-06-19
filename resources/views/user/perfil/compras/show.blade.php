@@ -16,15 +16,17 @@
 			<h2>Mis Compras</h2>
 
       <div class="row">
-        @foreach($compras as $compra)
+
         <div class="col-3">
           <span>producto: {{ $compra->producto->nombre }}</span>
           <span>precio: {{ $compra->producto->precio }}</span>
           <span>cantidad: {{ $compra->cantidad }}</span>
           <span>total: {{ $compra->total }}</span>
-					<a href="{{ route('user.compras.show', ['id' => $compra->id]) }}">Ver</a>
+
+          <span>vendedor: {{ $compra->comprador->email }}</span>
+
         </div>
-        @endforeach
+
       </div>
 
 	</div>

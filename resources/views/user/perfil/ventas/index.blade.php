@@ -13,16 +13,16 @@
 	</div>
 
 	<div class="col-9">
-			<h2>Mis Compras</h2>
+			<h2>Mis Ventas</h2>
 
       <div class="row">
-        @foreach($compras as $compra)
+        @foreach($ventas as $venta)
         <div class="col-3">
-          <span>producto: {{ $compra->producto->nombre }}</span>
-          <span>precio: {{ $compra->producto->precio }}</span>
-          <span>cantidad: {{ $compra->cantidad }}</span>
-          <span>total: {{ $compra->total }}</span>
-					<a href="{{ route('user.compras.show', ['id' => $compra->id]) }}">Ver</a>
+          <span>producto: {{ $venta->producto->nombre }}</span>
+          <span>precio: {{ $venta->producto->precio }}</span>
+          <span>cantidad: {{ $venta->cantidad }}</span>
+          <span>total: {{ $venta->total }}</span>
+          <a href="{{ route('user.ventas.show', ['id' => $venta->id]) }}">Ver</a>
         </div>
         @endforeach
       </div>

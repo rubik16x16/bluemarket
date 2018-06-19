@@ -12,13 +12,7 @@ class IndexController extends Controller
 
 	public function index(Request $request){
 
-		$productos= Producto::all();
-
-		foreach($productos as $producto){
-
-			$producto->imagenes= $producto->imagenes()->get();
-
-		}
+		$productos= Producto::all()->load('imagenes');
 
 		return view('user.index', [
 			'productos' => $productos

@@ -21,7 +21,7 @@ class productosController extends Controller{
 		$usuario= Usuario::find(session('usuario.id'));
 
 		return view('user.perfil.productos.index', [
-			'productos' => $usuario->productos()->get()
+			'productos' => $usuario->productos
 		]);
 
 	}
@@ -74,8 +74,7 @@ class productosController extends Controller{
 	 */
 	public function show($id){
 
-		$producto= Producto::find($id);
-		$producto->imagenes= $producto->imagenes()->get()->sortBy('orden');
+		$producto= Producto::find($id)->load('imagenes');
 
 		return view('user.perfil.productos.show', [
 			'producto' =>$producto
@@ -91,8 +90,7 @@ class productosController extends Controller{
 	 */
 	public function edit($id){
 
-		$producto= Producto::find($id);
-		$producto->imagenes= $producto->imagenes()->orderBy('orden')->get();
+		$producto= Producto::find($id)->load('imagenes');
 
 		return view('user.perfil.productos.edit', [
 			'producto'=> $producto
@@ -110,9 +108,8 @@ class productosController extends Controller{
 	public function update(Request $request, $id){
 
 		$producto= Producto::find($id);
-		$usuario= $producto->usuario()->get()->first();
 
-		if($usuario->id == session('usuario.id')){
+		if($producto->usuario->id == session('usuario.id')){
 
 			$producto->fill($request->all());
 			$producto->save();

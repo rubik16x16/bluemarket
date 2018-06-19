@@ -18,4 +18,16 @@ class Usuario extends Model
 
 	}
 
+	public function compras(){
+
+		return $this->hasMany('App\Models\Operacion', 'comprador_id', 'id');
+
+	}
+
+	public function ventas(){
+
+		return $this->hasMany('App\Models\Operacion', 'vendedor_id', 'id');
+
+	}
+
 }

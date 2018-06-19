@@ -19,9 +19,9 @@ class CreateProductosTable extends Migration
       $table->integer('existencia');
       $table->float('precio');
       $table->boolean('estado')->default(true);
-      $table->timestamps();
       $table->unsignedInteger('usuario_id');
       $table->foreign('usuario_id')->references('id')->on('usuarios')->onDelete('cascade')->onUpdate('cascade');
+      $table->timestamps();
 
     });
   }
