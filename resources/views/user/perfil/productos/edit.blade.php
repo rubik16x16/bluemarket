@@ -22,6 +22,7 @@
       <input type="text" name="nombre" value="{{ $producto->nombre }}" placeholder="nombre">
       <input type="text" name="existencia" value="{{ $producto->existencia }}" placeholder="existencia">
       <input type="text" name="precio" value="{{ $producto->precio }}" placeholder="precio">
+			<textarea name="descripcion" placeholder="descripcion">{{ $producto->descripcion }}</textarea>
 
 			<h2>imagenes</h2>
 

@@ -32,6 +32,13 @@
 			<span>vendedor: @{{ producto.usuario.email }}</span>
 			<span>descripcion: @{{ producto.descripcion }}</span>
 
+			@foreach($producto->comentarios as $comentario)
+
+			<span>comentario: {{ $comentario->comentario }}</span>
+			<span>respuesta: {{ $comentario->respuesta }}</span>
+
+			@endforeach
+
 			<form id="compra" action="{{ route('user.compras.post') }}" @keypress.enter.prevent="comprar" method="post">
 				{{ csrf_field() }}
 

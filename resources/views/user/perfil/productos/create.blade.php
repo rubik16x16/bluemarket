@@ -22,6 +22,7 @@
       <input type="text" name="nombre" value="" placeholder="nombre" required>
       <input type="text" name="existencia" value="" placeholder="existencia" required>
       <input type="text" name="precio" value="" placeholder="precio" required>
+			<textarea name="descripcion" placeholder="descripcion"></textarea>
 
 			<div id= "imgs"></div>
 

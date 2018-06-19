@@ -21,6 +21,10 @@
 		<span>precio: {{ $producto->precio }}</span>
 		<span>estado: {{ $producto->estado }}</span>
 
+		<h2>Descripcion</h2>
+
+		<p>{{ $producto->descripcion }}</p>
+
 		<h2>imagenes</h2>
 
 		@foreach($producto->imagenes as $imagen)
