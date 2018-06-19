@@ -30,6 +30,7 @@
 			<span>stock: @{{ producto.existencia }}</span>
 			<span>precio: @{{ producto.precio }}</span>
 			<span>vendedor: @{{ producto.usuario.email }}</span>
+			<span>descripcion: @{{ producto.descripcion }}</span>
 
 			<form id="compra" action="{{ route('user.compras.post') }}" @keypress.enter.prevent="comprar" method="post">
 				{{ csrf_field() }}
