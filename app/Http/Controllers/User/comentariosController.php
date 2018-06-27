@@ -6,10 +6,19 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Models\Comentario;
+use App\Models\Usuario;
 
 class comentariosController extends Controller{
 
-  public function store(Request $request, $id){
+  public function index(){
+
+    return view('user.perfil.comentariosIndex', [
+      'comentarios' => Usuario::find(session('usuario.id'))->comentarios
+    ]);
+
+  }
+
+  public function store_comentario(Request $request, $id){
 
     $comentario= new Comentario([
       'comentario' => $request->comentario,
@@ -20,6 +29,16 @@ class comentariosController extends Controller{
     $comentario->save();
 
     return json_encode($comentario->toArray());
+
+  }
+
+  public function store_respuesta(Request $request , $id){
+
+    $comentario= Comentario::find($id);
+    $comentario->respuesta= $request->respuesta;
+    $comentario->save();
+
+    return $request->respuesta . $id;
 
   }
 

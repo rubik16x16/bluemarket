@@ -71,9 +71,15 @@ Route::middleware(['Auth'])->group(function(){
 
 		Route::get('/ventas/{id}', 'User\Perfil\operacionesController@ventasShow')->name('user.ventas.show');
 
+		Route::get('/comentarios', 'User\comentariosController@index')->name('user.comentarios.index');
+
 	});
 
-	Route::post('/producto/{id}/comentarios', 'User\comentariosController@store')->name('user.comentarios.store');
+	// Comentarios
+
+	Route::post('/producto/{id}/comentarios', 'User\comentariosController@store_comentario')->name('user.comentarios.store_comentario');
+
+	Route::put('/producto/{id}/comentarios', 'User\comentariosController@store_respuesta')->name('user.comentarios.store_respuesta');
 
 	Route::get('/logout', function(){
 

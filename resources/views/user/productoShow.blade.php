@@ -109,7 +109,7 @@
 		props: ['producto'],
 		data: function(){
 			return {
-				url: "{{ route('user.comentarios.store', ['id' => $producto->id]) }}",
+				url: "{{ route('user.comentarios.store_comentario', ['id' => $producto->id]) }}",
 				comentario: ''
 			}
 		},

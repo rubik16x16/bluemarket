@@ -30,4 +30,10 @@ class Usuario extends Model
 
 	}
 
+	public function comentarios(){
+
+		return $this->hasMany('App\Models\Comentario', 'comprador_id', 'id');
+
+	}
+
 }
