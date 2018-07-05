@@ -10,6 +10,26 @@
 
 <script>
 
+Vue.component('pregunta-producto', {
+  props: ['producto'],
+  data: function(){
+    return {
+      imgUrl: "{{ asset('storage') }}"
+    }
+  },
+  template: `
+  @verbatim
+  <div class="pregunta-producto">
+    <img :src="imgRoute" :alt="producto.nombre" width="200" />
+  </div>
+  @endverbatim`,
+  computed: {
+    imgRoute: function(){
+      return this.imgUrl + '/' + this.producto.imagenes[0].src;
+    }
+  }
+});
+
 const preguntas= new Vue({
   el: '#preguntas',
   data: {
@@ -21,6 +41,7 @@ const preguntas= new Vue({
   @verbatim
   <div>
     <div class="preguntas-lista" v-for="(pregunta, index) in preguntas">
+      <pregunta-producto :producto="pregunta.producto"></pregunta-producto>
       <span>{{ pregunta.comentario }}</span>
       <span v-if="pregunta.respuesta != null">{{ pregunta.respuesta }}</span>
       <div class="respuesta" v-if="pregunta.responder == true">

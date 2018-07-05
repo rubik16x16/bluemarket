@@ -51,9 +51,7 @@ const imgs= new Vue({
 		@endverbatim
 	`,
 	data: {
-
 		inputs: 1
-
 	}
 
 });
