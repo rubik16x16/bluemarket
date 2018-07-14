@@ -7,8 +7,9 @@
 	<div class="col-3">
 		<h2>Categorias</h2>
 		<ul>
-			<li>Categoria1</li>
-			<li>Categoria2</li>
+			@foreach($categorias as $categoria)
+				<li>{{ $categoria->nombre }}</li>
+			@endforeach
 		</ul>
 	</div>
 

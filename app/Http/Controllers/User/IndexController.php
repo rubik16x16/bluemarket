@@ -6,16 +6,16 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Models\Producto;
+use App\Models\Categoria;
 
 class IndexController extends Controller
 {
 
 	public function index(Request $request){
 
-		$productos= Producto::all()->load('imagenes');
-
 		return view('user.index', [
-			'productos' => $productos
+			'productos' => Producto::all()->load('imagenes'),
+			'categorias' => Categoria::all()
 		]);
 
 	}
