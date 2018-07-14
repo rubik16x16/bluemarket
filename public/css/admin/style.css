@@ -1,0 +1,8 @@
+.left-navbar{
+  height: 100%;
+  position: fixed;
+}
+
+.content{
+  margin-left: auto !important;
+}

@@ -14,6 +14,8 @@ Route::middleware('adminAuth')->group(function(){
 
     })->name('admin.logout');
 
+    Route::get('/usuarios', 'Admin\UsuariosController@index')->name('admin.usuarios.index');
+
   });
 
 });

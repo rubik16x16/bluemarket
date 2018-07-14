@@ -9,7 +9,7 @@ class IndexController extends Controller{
 
   public function index(){
 
-    return 'Hola mundo';
+    return view('admin.index');
 
   }
 
