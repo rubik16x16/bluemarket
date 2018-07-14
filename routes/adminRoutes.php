@@ -16,6 +16,18 @@ Route::middleware('adminAuth')->group(function(){
 
     Route::get('/usuarios', 'Admin\UsuariosController@index')->name('admin.usuarios.index');
 
+    Route::resource('/categorias', 'Admin\CategoriasController', [
+			'names' => [
+				'index' => 'admin.categorias.index',
+				'create' => 'admin.categorias.create',
+				'store' => 'admin.categorias.store',
+				'show' => 'admin.categorias.show',
+				'edit' => 'admin.categorias.edit',
+				'update' => 'admin.categorias.update',
+				'destroy' => 'admin.categorias.destroy'
+			]
+		]);
+
   });
 
 });

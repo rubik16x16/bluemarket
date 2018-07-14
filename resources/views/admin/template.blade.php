@@ -55,7 +55,7 @@
             <a class="nav-link" href="{{ route('admin.usuarios.index') }}">Usuaios</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Categorias</a>
+            <a class="nav-link" href="{{ route('admin.categorias.index') }}">Categorias</a>
           </li>
           <li class="nav-item">
             <a class="nav-link disabled" href="#">Disabled</a>
