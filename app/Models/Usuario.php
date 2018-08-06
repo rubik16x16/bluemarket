@@ -30,9 +30,22 @@ class Usuario extends Model
 
 	}
 
-	public function comentarios(){
+	public function comentariosCompras(){
 
-		return $this->hasMany('App\Models\Comentario', 'comprador_id', 'id');
+		return $this->hasMany('App\Models\Comentario', 'comprador_id');
+
+	}
+
+	public function comentariosVentas(){
+
+		$productos= $this->productos;
+		$comentarios= collect();
+
+		$productos->each(function($producto) use(&$comentarios){
+			$comentarios= $comentarios->concat($producto->comentarios);
+		});
+
+		return $comentarios;
 
 	}
 

@@ -13,7 +13,7 @@ class comentariosController extends Controller{
   public function index(){
 
     return view('user.perfil.comentariosIndex', [
-      'comentarios' => Usuario::find(session('usuario.id'))->comentarios()->with('producto', 'producto.imagenes')->get()
+      'comentarios' => Usuario::find(session('usuario.id'))->comentariosCompras()->with('producto', 'producto.imagenes')->get()
 
     ]);
 
