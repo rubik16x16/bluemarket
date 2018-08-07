@@ -17,4 +17,18 @@ class UsuariosController extends Controller{
 
   }
 
+  public function comentarios($id){
+
+    $usuario= Usuario::find($id);
+    $comentarios= $usuario->comentariosCompras->concat($usuario->comentariosVentas());
+    $comentarios->each(function($comentario){
+      $comentario->load('producto');
+    });
+
+    return view('admin.usuarios.comentarios', [
+      'comentarios' => $comentarios
+    ]);
+
+  }
+
 }

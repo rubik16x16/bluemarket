@@ -16,6 +16,7 @@
       <td>{{ $usuario->email }}</td>
       <td>
         <a href="#" class="btn btn-danger">Desactivar</a>
+        <a href="{{ route('admin.usuarios.comentarios', ['id' => $usuario->id]) }}" class="btn btn-default">Comentarios</a>
       </td>
     </tr>
     @endforeach

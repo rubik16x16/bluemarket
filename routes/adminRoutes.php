@@ -4,7 +4,7 @@ Route::middleware('adminAuth')->group(function(){
 
   Route::prefix('admin')->group(function(){
 
-    Route::get('/', 'Admin\IndexController@index')->name('admin.index');
+    Route::get('/', 'Admin\AdminController@index')->name('admin.index');
 
     Route::get('/logout', function(){
 
@@ -15,6 +15,9 @@ Route::middleware('adminAuth')->group(function(){
     })->name('admin.logout');
 
     Route::get('/usuarios', 'Admin\UsuariosController@index')->name('admin.usuarios.index');
+
+    Route::get('/usuarios/{id}/comentarios', 'Admin\UsuariosController@comentarios')
+    ->name('admin.usuarios.comentarios');
 
     Route::resource('/categorias', 'Admin\CategoriasController', [
 			'names' => [
