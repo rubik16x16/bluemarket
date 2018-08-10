@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<title>
 		BlueMarket
 	</title>
@@ -49,7 +50,7 @@
 		</div>
 	</footer>
 
-	<script src="{{ asset('js/vue.js') }}"></script>
+	<script src="{{ asset('dist/js/app.js') }}"></script>
 	@yield('scripts')
 
 </body>
