@@ -7,8 +7,7 @@
 	<title>
 		BlueMarket
 	</title>
-	<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('dist/css/app.css') }}">
 </head>
 <body>
 
@@ -51,7 +50,6 @@
 	</footer>
 
 	<script src="{{ asset('js/vue.js') }}"></script>
-	<script src="{{ asset('js/axios.min.js') }}"></script>
 	@yield('scripts')
 
 </body>

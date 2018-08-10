@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>Admin</title>
-  <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('css/admin/style.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('dist/css/app.css') }}">
 </head>
 <body>
 
@@ -69,8 +69,7 @@
 
   </div>
 
-  <script src="{{ asset('js/vue.js') }}"></script>
-  <script src="{{ asset('js/axios.min.js') }}"></script>
+  <script src="{{ asset('dist/js/app.js') }}"></script>
   @yield('scripts')
 </body>
 </html>
