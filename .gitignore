@@ -13,3 +13,4 @@ yarn-error.log
 .env
 notas.txt
 /public/dist
+/public/mix-manifest.json

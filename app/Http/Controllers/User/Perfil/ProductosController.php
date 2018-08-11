@@ -10,7 +10,7 @@ use App\Models\Producto;
 use App\Models\Usuario;
 use App\Models\Imagen;
 
-class productosController extends Controller{
+class ProductosController extends Controller{
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -21,7 +21,13 @@ class productosController extends Controller{
 		$usuario= Usuario::find(session('usuario.id'));
 
 		return view('user.perfil.productos.index', [
-			'productos' => $usuario->productos
+			'productos' => str_replace('"', "'", $usuario->productos->load('imagenes')->toJson()),
+			'routes' => str_replace('"', "'", json_encode([
+				'create' => route('user.productos.create'),
+				'edit' => route('user.productos.edit', ['id']),
+				'destroy' => route('user.productos.destroy', ['id']),
+				'imgSrc' => asset('storage/')
+			]))
 		]);
 
 	}

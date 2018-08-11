@@ -1,6 +1,6 @@
 <template lang="html">
-  <div class='img-slider'>
-    <img :src="srcImgFocus" alt="" width="200">
+  <div class='slider'>
+    <img :src="srcImgFocus" alt="">
     <button @click="prev">prev</button>
     <button @click="next">next</button>
   </div>
@@ -37,4 +37,13 @@ export default {
 </script>
 
 <style lang="css">
+
+  .slider{
+    width: 200px;
+  }
+
+  .slider img{
+    width: 100%;
+  }
+
 </style>
