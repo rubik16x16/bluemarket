@@ -16,19 +16,37 @@
 
     <h2>Crear Producto</h2>
 
-    <form action="{{ route('user.productos.store') }}" method="post" enctype="multipart/form-data">
-      {{ csrf_field() }}
+		<div id="app">
 
-      <input type="text" name="nombre" value="" placeholder="nombre" required>
-      <input type="text" name="existencia" value="" placeholder="existencia" required>
-      <input type="text" name="precio" value="" placeholder="precio" required>
-			<textarea name="descripcion" placeholder="descripcion"></textarea>
+			<form action="{{ route('user.productos.store') }}" method="post" enctype="multipart/form-data">
+				{{ csrf_field() }}
 
-			<div id= "imgs"></div>
+			  <div class="form-group">
+			    <label for="nombre">Nombre</label>
+			    <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Nombre">
+			  </div>
 
-      <input type="submit" value="guardar">
+				<div class="form-group">
+			    <label for="existencia">Existencia</label>
+			    <input type="text" name="existencia" class="form-control" id="existencia" placeholder="Existencia">
+			  </div>
 
-    </form>
+				<div class="form-group">
+			    <label for="precio">Precio</label>
+			    <input type="text" name="precio" class="form-control" id="precio" placeholder="Precio">
+			  </div>
+
+				<div class="form-group">
+			    <label for="descripcion">Descripcion</label>
+			    <textarea name="descripcion" class="form-control" id="descripcion" placeholder="Descripcion"></textarea>
+			  </div>
+
+				<img-panel></img-panel>
+
+			  <button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+
+		</div>
 
 	</div>
 </div>
@@ -37,27 +55,6 @@
 
 @section('scripts')
 
-<script>
-
-const imgs= new Vue({
-
-	el: '#imgs',
-	template: `
-		@verbatim
-		<div class="img-panel">
-			<input v-for="n in inputs" type="file" :name="'img-' + n" value="">
-			<button type="button" name="button" @click="inputs+= 1">Agregar imagen</button>
-		</div>
-		@endverbatim
-	`,
-	data: {
-		inputs: 1
-	}
-
-});
-
-
-
-</script>
+<script src="{{ asset('dist/js/usuario-productos.js') }}"></script>
 
 @endsection
