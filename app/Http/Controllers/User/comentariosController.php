@@ -12,9 +12,14 @@ class comentariosController extends Controller{
 
   public function index(){
 
-    return view('user.perfil.comentariosIndex', [
-      'comentarios' => Usuario::find(session('usuario.id'))->comentariosCompras()->with('producto', 'producto.imagenes')->get()
+    $usuario= Usuario::find(session('usuario.id'));
+    $comentarios= $usuario->comentariosCompras()->with('producto', 'producto.imagenes')->get();
 
+    return view('user.perfil.comentarios.index', [
+      'comentarios' => str_replace('"', "'", $comentarios->toJson()),
+      'routes' => str_replace('"', "'", json_encode([
+        'update' => route('user.comentarios.store_respuesta', ['id'])
+      ]))
     ]);
 
   }

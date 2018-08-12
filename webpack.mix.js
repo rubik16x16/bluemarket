@@ -24,3 +24,4 @@ mix.js('resources/assets/js/app.js', 'public/dist/js')
 
 mix.js('resources/assets/js/components/productos-index/app.js', 'public/dist/js/productos-index.js');
 mix.js('resources/assets/js/components/user/productos/app.js', 'public/dist/js/user/productos.js');
+mix.js('resources/assets/js/components/user/comentarios/app.js', 'public/dist/js/user/comentarios.js');
