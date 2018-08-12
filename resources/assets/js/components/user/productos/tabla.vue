@@ -38,9 +38,9 @@
 
 <script>
 
-import urlAbmMethods from '../mixins/url-abm-methods';
+import urlAbmMethods from '../../mixins/url-abm-methods';
 
-Vue.component('slider', require('../slider/slider'));
+Vue.component('slider', require('../../slider/slider'));
 
 export default {
   mixins:[urlAbmMethods],

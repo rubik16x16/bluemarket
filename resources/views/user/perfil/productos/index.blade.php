@@ -25,6 +25,6 @@
 
 @section('scripts')
 
-<script src="{{ asset('dist/js/usuario-productos.js') }}"></script>
+<script src="{{ asset('dist/js/user/productos.js') }}"></script>
 
 @endsection

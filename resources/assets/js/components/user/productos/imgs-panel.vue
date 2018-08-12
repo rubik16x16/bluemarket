@@ -11,7 +11,7 @@
 
 <script>
 
-import urlAbmMethods from '../mixins/url-abm-methods';
+import urlAbmMethods from '../../mixins/url-abm-methods';
 
 export default {
   mixins: [urlAbmMethods],
