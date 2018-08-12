@@ -16,7 +16,7 @@
 
     <h2>Crear Producto</h2>
 
-		<div id="app">
+		<div id="productos-app">
 
 			<form action="{{ route('user.productos.store') }}" method="post" enctype="multipart/form-data">
 				{{ csrf_field() }}
@@ -41,7 +41,7 @@
 			    <textarea name="descripcion" class="form-control" id="descripcion" placeholder="Descripcion"></textarea>
 			  </div>
 
-				<img-panel></img-panel>
+				<imgs-add></imgs-add>
 
 			  <button type="submit" class="btn btn-primary">Submit</button>
 			</form>

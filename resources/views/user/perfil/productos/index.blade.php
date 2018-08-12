@@ -14,7 +14,7 @@
 
 	<div class="col-9">
 
-		<div id="app">
+		<div id="productos-app">
 			<tabla-productos :productos="{{ $productos }}" :routes="{{ $routes }}"></tabla-productos>
 		</div>
 

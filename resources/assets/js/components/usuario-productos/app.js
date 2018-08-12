@@ -3,8 +3,10 @@ require('../bootstrap');
 window.Vue= require('vue');
 
 Vue.component('tabla-productos', require('./tabla'));
-Vue.component('img-panel', require('./img-panel'));
+Vue.component('imgs-panel', require('./imgs-panel'));
+Vue.component('imgs-add', require('./imgs-add'));
+Vue.component('edit-form', require('./edit-form'));
 
 const app= new Vue({
-  el: '#app'
+  el: '#productos-app'
 });
