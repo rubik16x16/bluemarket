@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Producto;
 use App\Models\Categoria;
 
-class IndexController extends Controller
+class UserController extends Controller
 {
 
 	public function index(Request $request){

@@ -1,4 +1,5 @@
 export default {
+
   methods: {
     destroy(route){
       axios({
@@ -17,6 +18,17 @@ export default {
         data: data
       }).then(response => {
         console.log(response.data);
+      }).catch(e => {
+        console.log(e);
+      });
+    },
+    create(route, data, callback){
+      axios({
+        method: 'POST',
+        url: route,
+        data: data
+      }).then(response => {
+        callback(response.data);
       }).catch(e => {
         console.log(e);
       });

@@ -2,9 +2,9 @@
 
 // ***************************** All ************************************
 
-Route::get('/', 'User\IndexController@index')->name('user.index');
+Route::get('/', 'User\UserController@index')->name('user.index');
 
-Route::get('/producto/{id}', 'User\productosController@show')->name('user.public.producto.show');
+Route::get('/producto/{id}', 'User\ProductosController@show')->name('user.public.producto.show');
 
 //**************************** Guest ********************************
 
@@ -66,9 +66,9 @@ Route::middleware(['Auth'])->group(function(){
 
 	// Comentarios
 
-	Route::post('/producto/{id}/comentarios', 'User\comentariosController@store_comentario')->name('user.comentarios.store_comentario');
+	Route::post('/producto/{id}/comentarios', 'User\ComentariosController@store_comentario')->name('user.comentarios.store_comentario');
 
-	Route::put('/producto/{id}/comentarios', 'User\comentariosController@store_respuesta')->name('user.comentarios.store_respuesta');
+	Route::put('/producto/{id}/comentarios', 'User\ComentariosController@store_respuesta')->name('user.comentarios.store_respuesta');
 
 	Route::get('/logout', function(){
 

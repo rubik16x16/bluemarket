@@ -80,7 +80,7 @@ class ProductosController extends Controller{
 	 */
 	public function show($id){
 
-		$producto= Producto::find($id)->load('imagenes');
+		$producto= Producto::find($id)->load('imagenes', 'comentarios');
 
 		return view('user.perfil.productos.show', [
 			'producto' =>$producto
@@ -99,7 +99,7 @@ class ProductosController extends Controller{
 		return view('user.perfil.productos.edit', [
 			'producto'=> str_replace('"', "'", Producto::find($id)->load('imagenes')->toJson()),
 			'routes' => str_replace('"', "'", json_encode([
-				'update' => route('user.productos.update', ['id' => $id]), 
+				'update' => route('user.productos.update', ['id' => $id]),
 				'imgs' => [
 					'path' => asset('storage/'),
 					'destroy' => route('user.imagenes.destroy', ['id'])

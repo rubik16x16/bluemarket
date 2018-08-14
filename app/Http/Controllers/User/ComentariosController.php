@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Comentario;
 use App\Models\Usuario;
 
-class comentariosController extends Controller{
+class ComentariosController extends Controller{
 
   public function index(){
 
@@ -34,8 +34,7 @@ class comentariosController extends Controller{
 
     $comentario->save();
 
-    return json_encode($comentario->toArray());
-
+    return $comentario->toJson();
   }
 
   public function store_respuesta(Request $request , $id){

@@ -14,7 +14,7 @@
 	</div>
 
 	<div class="col-9">
-		<div id="app">
+		<div id="index-app">
 			<productos :productos="{{ $productos }}" :routes="{{ $routes }}"></productos>
 		</div>
 	</div>
@@ -24,6 +24,6 @@
 
 @section('scripts')
 
-<script src="{{ asset('dist/js/productos-index.js') }}"></script>
+<script src="{{ asset('dist/js/user/index.js') }}"></script>
 
 @endsection

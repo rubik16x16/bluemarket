@@ -22,6 +22,6 @@ mix.webpackConfig({
 mix.js('resources/assets/js/app.js', 'public/dist/js')
    .sass('resources/assets/sass/app.scss', 'public/dist/css');
 
-mix.js('resources/assets/js/components/productos-index/app.js', 'public/dist/js/productos-index.js');
+mix.js('resources/assets/js/components/user/index/app.js', 'public/dist/js/user/index.js');
 mix.js('resources/assets/js/components/user/productos/app.js', 'public/dist/js/user/productos.js');
 mix.js('resources/assets/js/components/user/comentarios/app.js', 'public/dist/js/user/comentarios.js');
