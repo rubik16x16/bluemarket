@@ -43,7 +43,7 @@ export default {
       let token = document.head.querySelector('meta[name="csrf-token"]');
 
       if(token){
-          return  token.content;
+        return  token.content;
       }else{
         return console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
       }

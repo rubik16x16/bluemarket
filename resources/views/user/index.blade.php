@@ -5,10 +5,12 @@
 <div class="row">
 
 	<div class="col-3">
-		<h2>Categorias</h2>
-		<ul>
+		<h4>Categorias</h4>
+		<ul class="nav flex-column">
 			@foreach($categorias as $categoria)
-				<li>{{ $categoria->nombre }}</li>
+			<li class="nav-item">
+				<a class="nav-link active" href="#">{{ $categoria->nombre }}</a>
+			</li>
 			@endforeach
 		</ul>
 	</div>
