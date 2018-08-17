@@ -3,7 +3,7 @@
     <div v-for="(producto, index) in productos" class="col-3 card-item">
       <span>nombre: @{{ producto.nombre }}</span>
       <span>precio: @{{ producto.precio }}</span>
-      <slider :imgs="producto.imagenes" :route="routes.img"></slider>
+      <slider :imgs="producto.imagenes" :path="routes.img" :key="producto.id"></slider>
       <a class="btn btn-primary" :href="routes.show.replace('id', producto.id)">Ver</a>
     </div>
   </div>

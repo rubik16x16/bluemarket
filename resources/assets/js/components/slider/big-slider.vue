@@ -1,23 +1,20 @@
 <template lang="html">
   <div class="row big-slider">
     <div class="col-3 thunbnails">
-      <img v-for="(img, index) in imgs" :src="route + '/' + img.src" @click="imgFocus= index" alt="">
+      <img v-for="(img, index) in imgs" :src="path + '/' + img.src" alt="">
     </div>
     <div class="col-9 big-img">
-      <img :src="srcImgFocus" alt="">
-      <button @click="prev">prev</button>
-      <button @click="next">next</button>
+      <slider :path="path" :imgs="imgs"></slider>
     </div>
   </div>
 </template>
 
 <script>
 
-import sliderMethods from './slider-methods';
+Vue.component('slider', require('./slider'))
 
 export default {
-  mixins: [sliderMethods],
-  props: ['imgs', 'route'],
+  props: ['imgs', 'path'],
   data(){
     return {
       imgFocus: 0
