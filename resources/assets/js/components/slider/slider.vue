@@ -18,17 +18,20 @@
 <script>
 
 export default {
-  props: ['imgs', 'path'],
+  props: ['imgs', 'path', 'focus', 'slice'],
   data: function(){
     return {
-      imgFocus: 0,
       show: false,
       frameLeft: 0,
       width: 0
     }
   },
+  watch:{
+    slice(){
+      this.frameLeft= this.focus != 0 ? (this.focus * this.width) * -1 : 0 ;
+    }
+  },
   mounted(){
-    console.log(3 * 1.23);
     var slider= this.$el;
     var style= window.getComputedStyle(slider);
     var imgs= this.$el.getElementsByClassName('img-wrapper');
