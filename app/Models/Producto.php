@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Producto extends Model{
 
   protected $table= "productos";
-  protected $fillable= ['nombre', 'existencia', 'precio', 'estado', 'descripcion', 'usuario_id'];
+  protected $fillable= ['nombre', 'existencia', 'precio', 'estado', 'descripcion', 'usuario_id', 'categoria_id'];
 
   public function usuario(){
 
@@ -17,13 +17,13 @@ class Producto extends Model{
 
   public function imagenes(){
 
-    return $this->hasMany('App\Models\Imagen');
+    return $this->hasMany('App\Models\ProductoImagen');
 
   }
 
   public function comentarios(){
 
-    return $this->hasMany('App\Models\Comentario', 'producto_id', 'id');
+    return $this->hasMany('App\Models\ProductoComentario');
 
   }
 

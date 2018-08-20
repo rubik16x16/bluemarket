@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Comentario extends Model{
+class ProductoComentario extends Model{
 
-  protected $table= 'comentarios';
+  protected $table= 'producto_comentarios';
   protected $fillable= ['producto_id', 'comprador_id', 'comentario', 'respuesta'];
 
   public function producto(){

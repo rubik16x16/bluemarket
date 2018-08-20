@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Imagen extends Model{
+class ProductoImagen extends Model{
 
-  protected $table= 'imagenes';
+  protected $table= 'producto_imagenes';
   protected $fillable= ['src', 'producto_id', 'orden'];
 
   public function producto(){

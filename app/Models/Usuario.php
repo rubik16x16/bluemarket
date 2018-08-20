@@ -8,7 +8,7 @@ class Usuario extends Model
 {
 
 	protected $table= "usuarios";
-	protected $fillable= ['email', 'clave'];
+	protected $fillable= ['email', 'clave', 'estado'];
 
 	protected $hidden = ['clave'];
 
@@ -32,7 +32,7 @@ class Usuario extends Model
 
 	public function comentariosCompras(){
 
-		return $this->hasMany('App\Models\Comentario', 'comprador_id');
+		return $this->hasMany('App\Models\ProductoComentario', 'comprador_id');
 
 	}
 
