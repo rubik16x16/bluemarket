@@ -5,7 +5,7 @@
 <div class="row">
 
 	<div class="col-3">
-		<h4>Categorias</h4>
+		<span>Categorias</span>
 		<ul class="nav flex-column">
 			@foreach($categorias as $categoria)
 			<li class="nav-item">
