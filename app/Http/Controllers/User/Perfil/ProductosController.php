@@ -100,7 +100,8 @@ class ProductosController extends Controller{
 	public function edit($id){
 
 		return view('user.perfil.productos.edit', [
-			'producto'=> str_replace('"', "'", Producto::find($id)->load('imagenes')->toJson()),
+			'producto'=> str_replace('"', "'", Producto::find($id)->load('imagenes', 'categoria')->toJson()),
+			'categorias' => str_replace('"', "'", Categoria::all()->toJson()),
 			'routes' => str_replace('"', "'", json_encode([
 				'update' => route('user.productos.update', ['id' => $id]),
 				'imgs' => [

@@ -41,6 +41,15 @@
 			    <textarea name="descripcion" class="form-control" id="descripcion" placeholder="Descripcion"></textarea>
 			  </div>
 
+				<div class="form-group">
+			    <label for="categoria">Categoria</label>
+			    <select name="categoria_id" class="form-control" id="categoria">
+			    @foreach($categorias as $categoria)
+						<option value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
+					@endforeach
+			    </select>
+			  </div>
+
 				<imgs-add></imgs-add>
 
 			  <button type="submit" class="btn btn-primary">Submit</button>

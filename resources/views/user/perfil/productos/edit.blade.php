@@ -15,7 +15,7 @@
 	<div class="col-9">
 
 		<div id="productos-app">
-			<edit-form :producto="{{ $producto }}" :routes="{{ $routes }}"></edit-form>
+			<edit-form :producto="{{ $producto }}" :categorias="{{ $categorias }}" :routes="{{ $routes }}"></edit-form>
 		</div>
 
 	</div>
