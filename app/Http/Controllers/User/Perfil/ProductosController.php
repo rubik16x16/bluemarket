@@ -7,8 +7,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
 use App\Models\Producto;
+use App\Models\Categoria;
 use App\Models\Usuario;
-use App\Models\Imagen;
+use App\Models\ProductoImagen;
 
 class ProductosController extends Controller{
 	/**
@@ -39,7 +40,9 @@ class ProductosController extends Controller{
 	 */
 	public function create(){
 
-		return view('user.perfil.productos.create');
+		return view('user.perfil.productos.create', [
+			'categorias' => Categoria::all()
+		]);
 
 	}
 
@@ -58,7 +61,7 @@ class ProductosController extends Controller{
 		$orden= 1;
 		foreach($request->file() as $file){
 
-			$imagen= new Imagen([
+			$imagen= new ProductoImagen([
 				'src' => $file->store('imgs', 'public'),
 				'producto_id' => $producto->id,
 				'orden' => $orden++
@@ -128,7 +131,7 @@ class ProductosController extends Controller{
 			$orden= 1;
 			foreach($request->file() as $file){
 
-				$imagen= new Imagen([
+				$imagen= new ProductoImagen([
 					'src' => $file->store('imgs', 'public'),
 					'producto_id' => $producto->id,
 					'orden' => $orden++

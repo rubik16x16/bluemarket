@@ -5,7 +5,7 @@ namespace App\Http\Controllers\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\Models\Comentario;
+use App\Models\ProductoComentario;
 use App\Models\Usuario;
 
 class ComentariosController extends Controller{
@@ -26,7 +26,7 @@ class ComentariosController extends Controller{
 
   public function store_comentario(Request $request, $id){
 
-    $comentario= new Comentario([
+    $comentario= new ProductoComentario([
       'comentario' => $request->comentario,
       'producto_id' => $id,
       'comprador_id' => session('usuario.id')
@@ -39,7 +39,7 @@ class ComentariosController extends Controller{
 
   public function store_respuesta(Request $request , $id){
 
-    $comentario= Comentario::find($id);
+    $comentario= ProductoComentario::find($id);
     $comentario->respuesta= $request->respuesta;
     $comentario->save();
 

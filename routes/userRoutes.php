@@ -44,7 +44,7 @@ Route::middleware(['Auth'])->group(function(){
 
 		// Eliminar imagenes
 
-		Route::delete('/imagen/{id}', 'User\imagenesController@destroy')->name('user.imagenes.destroy');
+		Route::delete('/imagen/{id}', 'User\ProductoImagenesController@destroy')->name('user.imagenes.destroy');
 
 		// Compras
 
