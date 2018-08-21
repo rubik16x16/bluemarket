@@ -32,17 +32,11 @@ export default {
     }
   },
   mounted(){
-    var slider= this.$el;
-    var style= window.getComputedStyle(slider);
-    var imgs= this.$el.getElementsByClassName('img-wrapper');
-    var width= style.getPropertyValue('width');
-    this.width= parseInt(width.substr(0, width.length -2));
 
-    for(var i= 0; i < imgs.length; i++){
-      imgs[i].style.width= width;
-    }
+    this.reRender();
 
-    this.$el.getElementsByClassName('frame')[0].style.width= ((imgs.length * this.width) + 3) + 'px';
+    window.addEventListener('resize', this.reRender);
+
   },
   methods: {
     slide(btn = null){
@@ -57,6 +51,20 @@ export default {
       left= left == 0 ? (((this.imgs.length - 1) * width)) * -1 : (left + width);
       return this.frameLeft= left;
 
+    },
+    reRender(){
+      var slider= this.$el;
+      var style= window.getComputedStyle(slider);
+      var imgs= this.$el.getElementsByClassName('img-wrapper');
+      var width= style.getPropertyValue('width');
+      this.width= parseInt(width.substr(0, width.length -2));
+      this.frameLeft= 0;
+
+      for(var i= 0; i < imgs.length; i++){
+        imgs[i].style.width= width;
+      }
+
+      this.$el.getElementsByClassName('frame')[0].style.width= ((imgs.length * this.width) + 3) + 'px';
     }
   }
 }
