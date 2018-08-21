@@ -1,10 +1,14 @@
 <template lang="html">
   <div class="row big-slider">
     <div class="col-3 thunbnails">
-      <img v-for="(img, index) in imgs" :src="path + '/' + img.src" alt="" @click="setFocus(index)">
+      <div class="thumbnail" v-for="(img, index) in imgs">
+        <img :src="path + '/' + img.src" alt="" @click="setFocus(index)">
+      </div>
     </div>
     <div class="col-9 big-img">
-      <slider :path="path" :imgs="imgs" :focus="focus" :slice="slice"></slider>
+      <div class="slider-wrapper">
+        <slider :path="path" :imgs="imgs" :focus="focus" :slice="slice"></slider>
+      </div>
     </div>
   </div>
 </template>
@@ -32,11 +36,26 @@ export default {
 
 <style lang="css">
 
-  .thunbnails img{
+  .thumbnail{
     height: 120px;
+    width: 100%;
+    position: relative;
+    background: black;
+    margin-top: 10px;
+    overflow: hidden;
   }
 
-  .big-img img{
+  .thumbnail img{
+    max-width: 100%;
+    max-height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+  }
+
+  .slider-wrapper{
     height: 360px;
   }
 

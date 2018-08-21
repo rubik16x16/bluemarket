@@ -66,6 +66,7 @@ export default {
 
   .slider{
     width: 100%;
+    height: 100%;
     position: relative;
     overflow: hidden;
   }
@@ -93,16 +94,24 @@ export default {
     left: 0px;
     position: relative;
     transition: left .5s ease-out 0s;
+    height: 100%;
   }
 
   .img-wrapper{
+    position: relative;
     background: black;
     float: left;
-    width: 200px;
+    height: inherit;
   }
 
   .img-wrapper img{
-    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
   }
 
   .clear{

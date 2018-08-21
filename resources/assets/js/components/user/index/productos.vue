@@ -3,7 +3,9 @@
     <div v-for="(producto, index) in productos" class="col-4">
       <div class="card text-center producto">
         <div class="card-body">
-          <slider :imgs="producto.imagenes" :path="routes.img" :key="producto.id"></slider>
+          <div class="slider-wrapper">
+            <slider :imgs="producto.imagenes" :path="routes.img" :key="producto.id"></slider>
+          </div>
         </div>
         <div class="card-footer text-muted">
           <h2 class="nombre"><a :href="routes.show.replace('id', producto.id)">{{ producto.nombre }}</a></h2>
@@ -28,6 +30,14 @@ export default {
 .producto{
   margin-top: 20px;
   border-radius: 0;
+}
+
+.producto .card-body{
+  padding: 0;
+}
+
+.producto .slider-wrapper{
+  height: 160px;
 }
 
 .producto .card-footer{
