@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Storage;
+
+use App\Models\ProductoImagen;
 
 class CreateProductoImagenesTable extends Migration{
   /**
@@ -27,6 +30,12 @@ class CreateProductoImagenesTable extends Migration{
    * @return void
    */
   public function down(){
+
+    $imagenes= ProductoImagen::all()->map(function($producto){
+      return $producto->src;
+    });
+
+    Storage::disk('public')->delete($imagenes->toArray());
     Schema::dropIfExists('producto_imagenes');
   }
 }
