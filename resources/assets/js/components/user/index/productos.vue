@@ -4,7 +4,7 @@
       <div class="card text-center producto">
         <div class="card-body">
           <div class="slider-wrapper">
-            <slider :imgs="producto.imagenes" :path="routes.img" :key="producto.id"></slider>
+            <slider :imgs="producto.imagenes" :path="routes.img + '/productos/imgs/sm/'" :key="producto.id"></slider>
           </div>
         </div>
         <div class="card-footer text-muted">

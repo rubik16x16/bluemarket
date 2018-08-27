@@ -31,11 +31,16 @@ class CreateProductoImagenesTable extends Migration{
    */
   public function down(){
 
-    $imagenes= ProductoImagen::all()->map(function($producto){
-      return $producto->src;
+    $imgs= ProductoImagen::all()->map(function($producto){
+      return 'productos/imgs/' . $producto->src;
     });
 
-    Storage::disk('public')->delete($imagenes->toArray());
+    $smImgs= ProductoImagen::all()->map(function($producto){
+      return 'productos/imgs/sm/' . $producto->src;
+    });
+
+    Storage::disk('public')->delete($imgs->toArray());
+    Storage::disk('public')->delete($smImgs->toArray());
     Schema::dropIfExists('producto_imagenes');
   }
 }

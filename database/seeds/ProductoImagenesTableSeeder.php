@@ -22,7 +22,7 @@ class ProductoImagenesTableSeeder extends Seeder{
 
         shuffle($files);
         $fileName= explode('.', $files[0]);
-        $newFileName= 'productos/imgs/' . $this->randHash() . ".{$fileName[1]}";
+        $newFileName= $this->randHash() . ".{$fileName[1]}";
 
         ProductoImagen::create([
           'src' => $newFileName,
@@ -30,7 +30,9 @@ class ProductoImagenesTableSeeder extends Seeder{
           'orden' => $i
         ]);
 
-        Storage::disk('public')->put($newFileName, Storage::get($files[0]));
+        $newImg= $this->scale(250, 150, Image::make(Storage::get($files[0])));
+      	Storage::disk('public')->put('productos/imgs/sm/' . $newFileName, $newImg->encode($fileName[1])->encoded);
+        Storage::disk('public')->put('productos/imgs/' . $newFileName, Storage::get($files[0]));
 
       }
 
@@ -43,5 +45,30 @@ class ProductoImagenesTableSeeder extends Seeder{
   	return substr(md5(openssl_random_pseudo_bytes(20)),-$len);
 
   }
+
+  public function scale($maxWidth, $maxHeight, Intervention\Image\Image $img){
+
+    $width = $img->width();
+		$height= $img->height();
+
+		if($maxWidth > $maxHeight){
+			$newHeight= $maxHeight;
+			$newWidth= ($maxHeight * $width)/ $height;
+			if($width > $height){
+				$newWidth= $maxWidth;
+				$newHeight= ($maxWidth * $height)/ $width;
+			}
+		}else{
+			$newWidth= $maxWidth;
+			$newHeight= ($maxWidth * $height)/ $width;
+			if($height > $width){
+				$newHeight= $maxHeight;
+				$newWidth= ($maxHeight * $width)/ $height;
+			}
+		}
+
+		return $img->resize($newWidth, $newHeight);
+
+	}
 
 }
