@@ -2,7 +2,7 @@
   <div class="imgs-panel">
     <div class="row">
       <div class="col-3 img-box" v-for="(img, index) in listImgs">
-        <img class="rounded" :src="routes.path + '/' + img.src" alt="">
+        <img class="rounded" :src="routes.path + '/productos/imgs/sm/' + img.src" alt="">
         <button class="btn btn-block btn-danger" @click="removeImg(img.id, index)" type="button">borrar</button>
       </div>
     </div>

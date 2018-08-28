@@ -21,7 +21,7 @@
           <td>{{ producto.precio }}</td>
           <td>{{ producto.estado }}</td>
           <td>{{ producto.descripcion }}</td>
-          <th><slider class="productos-slider" :imgs="producto.imagenes" :path="routes.imgSrc"></slider></th>
+          <th style="height: 120px"><slider class="productos-slider" :imgs="producto.imagenes" :path="routes.imgSrc + '/productos/imgs/sm'"></slider></th>
           <td>
             <a class="btn btn-warning" :href="routes.edit.replace('id', producto.id)">Editar</a>
             <a class="btn btn-danger" href="#" @click.prevent="removeProducto(producto.id, index)">Eliminar</a>
