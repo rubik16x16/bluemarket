@@ -2,12 +2,12 @@
   <div class="row big-slider">
     <div class="col-3 thunbnails">
       <div class="thumbnail" v-for="(img, index) in imgs">
-        <img :src="path + '/' + img.src" alt="" @click="setFocus(index)">
+        <img :src="path[1] + img.src" alt="" @click="setFocus(index)">
       </div>
     </div>
     <div class="col-9 big-img">
       <div class="slider-wrapper">
-        <slider :path="path" :imgs="imgs" :focus="focus" :slice="slice"></slider>
+        <slider :path="path[0]" :imgs="imgs" :focus="focus" :slice="slice"></slider>
       </div>
     </div>
   </div>
