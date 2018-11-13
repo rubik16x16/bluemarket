@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\User\Perfil;
+namespace App\Http\Controllers\User\Usuario;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -19,32 +19,9 @@ class ProductosController extends Controller{
 	 */
 	public function index(){
 
-		$usuario= Usuario::find(session('usuario.id'));
-
-		return view('user.perfil.productos.index', [
-			'productos' => str_replace('"', "'", $usuario->productos->load('imagenes')->toJson()),
-			'routes' => str_replace('"', "'", json_encode([
-				'create' => route('user.productos.create'),
-				'edit' => route('user.productos.edit', ['id']),
-				'destroy' => route('user.productos.destroy', ['id']),
-				'imgSrc' => asset('storage/')
-			]))
-		]);
-
-	}
-
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function create(){
-
-		return view('user.perfil.productos.create', [
-			'categorias' => Categoria::all()
-		]);
-
-	}
+		$usuario= Usuario::find(1);
+		return response()->json($usuario->productos->load(['usuario', 'categoria'])->toArray());
+	}//end index
 
 	/**
 	 * Store a newly created resource in storage.
@@ -87,28 +64,6 @@ class ProductosController extends Controller{
 
 		return view('user.perfil.productos.show', [
 			'producto' =>$producto
-		]);
-
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return \Illuminate\Http\Response
-	 */
-	public function edit($id){
-
-		return view('user.perfil.productos.edit', [
-			'producto'=> str_replace('"', "'", Producto::find($id)->load('imagenes', 'categoria')->toJson()),
-			'categorias' => str_replace('"', "'", Categoria::all()->toJson()),
-			'routes' => str_replace('"', "'", json_encode([
-				'update' => route('user.productos.update', ['id' => $id]),
-				'imgs' => [
-					'path' => asset('storage/'),
-					'destroy' => route('user.imagenes.destroy', ['id'])
-				]
-			]))
 		]);
 
 	}

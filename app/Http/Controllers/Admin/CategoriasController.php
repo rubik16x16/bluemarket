@@ -15,11 +15,8 @@ class CategoriasController extends Controller{
    */
   public function index(){
 
-    return view('admin.categorias.index', [
-      'categorias' => Categoria::all()
-    ]);
-
-  }
+    return response()->json(Categoria::all()->toArray());
+  }//end index
 
   /**
    * Show the form for creating a new resource.

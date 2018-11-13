@@ -1,0 +1,15 @@
+<form [formGroup]="producto" (ngSubmit)="enviar()">
+  <input type="text" formControlName="nombre">
+  <input type="text" formControlName="precio">
+  <input type="text" formControlName="existencia">
+  <textarea type="text" formControlName="descripcion"></textarea>
+  <select formControlName="categoria" name="categoria" id="">
+    <option *ngFor="let categoria of categorias; let i= index" [value]="i">{{ categoria.getNombre() }}</option>
+  </select>
+  <input type="file" (change)="onSelectFile($event)" id="img-loader">
+  <div class="imgs">
+    <img *ngFor="let imgUrl of imgsUrl" [src]="imgUrl">
+  </div>
+  <button type="button" (click)="addImg()">AddImg</button>
+  <button type="submit">Enviar</button>
+</form>

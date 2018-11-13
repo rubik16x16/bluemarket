@@ -1,16 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { UserComponent } from './user.component';
+import { UsuarioComponent } from './usuario.component';
 
 const routes: Routes = [
-  { 
+  {
     path: '',
-    component: UserComponent,
+    component: UsuarioComponent,
     children: [
-      {
-        path: 'perfil',
-        loadChildren: './usuario/usuario.module#UsuarioModule'
-      }
+      { path: 'productos', loadChildren: './productos/productos.module#ProductosModule' }
     ]
   }
 ];
@@ -19,4 +16,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class UserRoutingModule { }
+export class UsuarioRoutingModule { }

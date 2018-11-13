@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\User\Perfil;
+namespace App\Http\Controllers\User\Usuario;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -9,7 +9,7 @@ use App\Models\Operacion;
 use App\Models\Producto;
 use App\Models\Usuario;
 
-class operacionesController extends Controller
+class OperacionesController extends Controller
 {
   public function comprasIndex(){
 
