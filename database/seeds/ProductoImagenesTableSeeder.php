@@ -33,18 +33,14 @@ class ProductoImagenesTableSeeder extends Seeder{
         $newImg= $this->scale(250, 150, Image::make(Storage::get($files[0])));
       	Storage::disk('public')->put('productos/imgs/sm/' . $newFileName, $newImg->encode($fileName[1])->encoded);
         Storage::disk('public')->put('productos/imgs/' . $newFileName, Storage::get($files[0]));
-
-      }
-
-    }
-
-  }
+      }//end for
+    }//end foreach
+  }//end run
 
   public function randHash($len= 32){
 
   	return substr(md5(openssl_random_pseudo_bytes(20)),-$len);
-
-  }
+  }//end randHash
 
   public function scale($maxWidth, $maxHeight, Intervention\Image\Image $img){
 
@@ -68,7 +64,5 @@ class ProductoImagenesTableSeeder extends Seeder{
 		}
 
 		return $img->resize($newWidth, $newHeight);
-
-	}
-
-}
+	}//end scale
+}// end ProductoImagenesTableSeeder

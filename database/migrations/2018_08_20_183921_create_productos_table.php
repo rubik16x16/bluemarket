@@ -15,13 +15,13 @@ class CreateProductosTable extends Migration{
       $table->increments('id');
       $table->string('nombre', 30);
       $table->integer('existencia');
-      $table->float('precio');
-      $table->string('descripcion');
+      $table->double('precio');
+      $table->text('descripcion');
       $table->boolean('estado')->default(true);
       $table->unsignedInteger('categoria_id');
-      $table->unsignedInteger('usuario_id');
+      $table->unsignedInteger('user_id');
       $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('cascade')->onUpdate('cascade');
-      $table->foreign('usuario_id')->references('id')->on('usuarios')->onDelete('cascade')->onUpdate('cascade');
+      $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
       $table->timestamps();
     });
   }

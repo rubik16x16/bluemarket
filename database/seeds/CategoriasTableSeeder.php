@@ -11,6 +11,7 @@ class CategoriasTableSeeder extends Seeder{
    * @return void
    */
   public function run(){
+    
     $categorias= [
       'Tecnologia', 'Juguetes', 'Herramientas',
        'Libros', 'Joyas', 'inmuebles', 'vehiculos'
@@ -19,6 +20,5 @@ class CategoriasTableSeeder extends Seeder{
     foreach ($categorias as $categoria) {
       Categoria::create(['nombre' => $categoria]);
     }
-
-  }
-}
+  }//end run
+}//end CategoriasTableSeeder

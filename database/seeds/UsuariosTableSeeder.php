@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
-use App\Models\Usuario;
+use App\Models\Categoria;
 
 class UsuariosTableSeeder extends Seeder{
+
   /**
    * Run the database seeds.
    *
@@ -12,17 +12,6 @@ class UsuariosTableSeeder extends Seeder{
    */
   public function run(){
 
-    for($i= 1; $i < 5 ; $i++){
-      Usuario::create([
-        'email' => "usuario{$i}@gmail.com",
-        'clave' => password_hash('123', PASSWORD_DEFAULT)
-      ]);
-    }
-
-    Usuario::create([
-      'email' => 'drt_mike@hotmail.com',
-      'clave' => password_hash('123', PASSWORD_DEFAULT)
-    ]);
-
-  }
-}
+    factory(\App\Models\User::class, 20)->create();
+  }//end run
+}//end UsuariosTableSeeder

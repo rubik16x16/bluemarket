@@ -16,8 +16,8 @@ class CreateOperacionesTable extends Migration{
       $table->unsignedInteger('comprador_id');
       $table->unsignedInteger('vendedor_id');
       $table->unsignedInteger('producto_id');
-      $table->foreign('comprador_id')->references('id')->on('usuarios')->onDelete('cascade')->onUpdate('cascade');
-      $table->foreign('vendedor_id')->references('id')->on('usuarios')->onDelete('cascade')->onUpdate('cascade');
+      $table->foreign('comprador_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+      $table->foreign('vendedor_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
       $table->foreign('producto_id')->references('id')->on('productos')->onDelete('cascade')->onUpdate('cascade');
       $table->integer('cantidad');
       $table->timestamps();
